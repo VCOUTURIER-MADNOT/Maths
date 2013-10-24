@@ -1,18 +1,14 @@
-function y = MONREC(t)
-  y = zeros(t);
+function [x] = MONREC(t)
   T = 1;
-  for i=1:size(t,2)
-    x = modulo(t(i), T)
-    x = x^2
-    x = modulo(x,T);
-    if x > 0.5 then
-        x = 1
-    else
-        x = 0
-    end
-    y(i)=x;
-  end
-  
-  return y;
+  x = zeros(t)
+  x = pmodulo(t*2, T) >= 0.5
+  x = 2 * x - 1
+  return x;
 endfunction
 
+function [x] = MASCIE(t)
+  T = 1;
+  x = zeros(t)
+  x = pmodulo(t*2,T)
+  return x
+endfunction
